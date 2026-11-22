@@ -18,5 +18,3 @@ Cargo.lock.bak
 /dice-server.toml
 /dice-agent.toml
 
-# Push separately after: gh auth refresh -s workflow
-.github/workflows/
