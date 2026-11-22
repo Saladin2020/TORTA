@@ -1,0 +1,40 @@
+# TORTA Dice server — copy to dice-server.toml and harden before production.
+
+listen = "0.0.0.0:8080"
+database_url = "postgres://dice:CHANGE_ME@127.0.0.1:5432/dice"
+
+# Strong random secret (min 24 chars). Example: openssl rand -base64 48
+jwt_secret = "replace-with-long-random-secret"
+jwt_ttl_hours = 8
+
+store_path = "/var/lib/dice/store"
+web_root = "/opt/dice/web"
+
+# Required in production: openssl rand -hex 32
+store_key_hex = ""
+
+# Set true in production — rejects weak jwt_secret / missing store key / empty CORS
+production = false
+
+# Comma-separated HTTPS origins of the web UI (required when production=true)
+cors_origins = ["https://backup.example.com"]
+
+login_max_attempts = 8
+login_window_secs = 300
+stale_snapshot_hours = 6
+
+# Optional: POST JSON on backup failure / stale snapshots
+# notify_webhook_url = "https://hooks.example.com/dice"
+
+# Packaged agent binaries for portal download (run deploy/publish-agent.ps1)
+agent_dist_dir = "./dist/agents"
+
+[ldap]
+enabled = false
+# Prefer ldaps:// in production
+url = "ldaps://dc.example.local:636"
+bind_dn = "CN=BackupSvc,OU=Service,DC=example,DC=local"
+bind_password = "secret"
+base_dn = "DC=example,DC=local"
+user_filter = "(&(objectClass=user)(sAMAccountName={username}))"
+username_attr = "sAMAccountName"

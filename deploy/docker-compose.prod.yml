@@ -1,0 +1,30 @@
+# Production-ish stack: Postgres + optional reverse-proxy notes.
+# Run dice-server on the host or a dedicated container with secrets mounted.
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: dice
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
+      POSTGRES_DB: dice
+    volumes:
+      - dice_pg:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dice"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  dice_pg:
+
+# TLS: terminate with nginx/caddy in front of dice-server (see nginx.conf.example).
+# Required env for dice-server:
+#   DICE_PRODUCTION=true
+#   JWT_SECRET=...
+#   DICE_STORE_KEY=$(openssl rand -hex 32)
+#   DICE_CORS_ORIGINS=https://backup.example.com
+#   DICE_BOOTSTRAP_ADMIN_PASSWORD=...  (first boot only)

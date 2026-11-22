@@ -1,0 +1,5 @@
+server_url = "http://backup.example.local:8080"
+agent_token = "dice_paste_from_admin"
+enabled = true
+poll_interval_secs = 60
+extra_paths = []

@@ -1,0 +1,16 @@
+[Unit]
+Description=TORTA Dice backup agent
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=%i
+WorkingDirectory=%h
+ExecStart=/usr/local/bin/dice-agent -c %h/.config/dice/dice-agent.toml run
+Restart=on-failure
+RestartSec=10
+Environment=RUST_LOG=info
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,21 @@
+[package]
+name = "dice-core"
+version.workspace = true
+edition.workspace = true
+description = "FastCDC + BLAKE3 + zstd content-addressed store (org shared dedup)"
+
+[dependencies]
+blake3 = { workspace = true }
+chacha20poly1305 = "0.10"
+chrono = { workspace = true }
+fastcdc = { workspace = true }
+fs4 = { workspace = true }
+memmap2 = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+walkdir = { workspace = true }
+zstd = { workspace = true }
+
+[dev-dependencies]
+tempfile = "3"

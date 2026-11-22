@@ -1,0 +1,35 @@
+[package]
+name = "dice-agent"
+version.workspace = true
+edition.workspace = true
+description = "TORTA Dice backup agent for Windows and Linux"
+
+[[bin]]
+name = "dice-agent"
+path = "src/main.rs"
+
+[dependencies]
+dice-core = { workspace = true }
+anyhow = { workspace = true }
+chrono = { workspace = true }
+clap = { workspace = true }
+futures-util = { workspace = true }
+hostname = { workspace = true }
+reqwest = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tao = { workspace = true }
+tokio = { workspace = true }
+tokio-tungstenite = { workspace = true }
+toml = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+tray-icon = { workspace = true }
+uuid = { workspace = true }
+walkdir = { workspace = true }
+image = { workspace = true }
+egui = { workspace = true }
+eframe = { workspace = true }
+
+[build-dependencies]
+winresource = "0.1"

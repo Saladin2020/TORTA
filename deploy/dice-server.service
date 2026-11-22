@@ -1,0 +1,17 @@
+[Unit]
+Description=TORTA Dice backup server
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+Type=simple
+User=dice
+Group=dice
+WorkingDirectory=/opt/dice
+ExecStart=/opt/dice/dice-server -c /opt/dice/dice-server.toml
+Restart=on-failure
+RestartSec=5
+Environment=RUST_LOG=info
+
+[Install]
+WantedBy=multi-user.target

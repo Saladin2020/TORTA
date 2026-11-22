@@ -1,0 +1,57 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/dice-core",
+    "crates/dice-server",
+    "crates/dice-agent",
+]
+default-members = ["crates/dice-server", "crates/dice-agent"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+authors = ["TORTA / Dice"]
+
+[workspace.dependencies]
+dice-core = { path = "crates/dice-core" }
+anyhow = "1"
+argon2 = "0.5"
+axum = { version = "0.8", features = ["multipart", "ws"] }
+tokio-tungstenite = { version = "0.26", features = ["rustls-tls-webpki-roots"] }
+futures-util = "0.3"
+tray-icon = "0.19"
+tao = "0.30"
+axum-extra = { version = "0.10", features = ["typed-header"] }
+blake3 = "1.5"
+chrono = { version = "0.4", default-features = false, features = ["clock", "std", "serde"] }
+clap = { version = "4.5", features = ["derive", "env"] }
+fastcdc = "3.1"
+fs4 = "0.12"
+futures = "0.3"
+hostname = "0.4"
+jsonwebtoken = "9"
+ldap3 = { version = "0.11", default-features = false, features = ["tls"] }
+memmap2 = "0.9"
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls", "multipart", "stream"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sqlx = { version = "0.8", features = ["runtime-tokio", "tls-rustls", "postgres", "uuid", "chrono", "migrate"] }
+thiserror = "2"
+tokio = { version = "1", features = ["full"] }
+toml = "0.8"
+tower-http = { version = "0.6", features = ["cors", "fs", "trace", "limit"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+uuid = { version = "1", features = ["serde", "v4"] }
+walkdir = "2"
+zstd = "0.13"
+zip = { version = "2", default-features = false, features = ["deflate"] }
+image = { version = "0.25", default-features = false, features = ["jpeg", "png"] }
+egui = "0.31"
+eframe = { version = "0.31", default-features = false, features = ["default_fonts", "glow", "wayland", "x11"] }
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true

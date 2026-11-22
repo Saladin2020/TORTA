@@ -1,0 +1,22 @@
+/target
+/node_modules
+/apps/web/dist
+/apps/web/node_modules
+/dist/
+.env
+*.db
+.dice-store/
+/data/
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
+Cargo.lock.bak
+
+# Local runtime config (may contain secrets) — keep *.example committed
+/dice-server.toml
+/dice-agent.toml
+
+# Push separately after: gh auth refresh -s workflow
+.github/workflows/

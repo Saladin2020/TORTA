@@ -1,0 +1,34 @@
+[package]
+name = "dice-server"
+version.workspace = true
+edition.workspace = true
+description = "TORTA Dice org backup control plane + shared chunk store"
+
+[[bin]]
+name = "dice-server"
+path = "src/main.rs"
+
+[dependencies]
+dice-core = { workspace = true }
+anyhow = { workspace = true }
+argon2 = { workspace = true }
+axum = { workspace = true }
+blake3 = { workspace = true }
+chrono = { workspace = true }
+clap = { workspace = true }
+futures = { workspace = true }
+futures-util = { workspace = true }
+jsonwebtoken = { workspace = true }
+ldap3 = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+sqlx = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true }
+toml = { workspace = true }
+tower-http = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+uuid = { workspace = true }
+reqwest = { workspace = true }
+zip = { workspace = true }
